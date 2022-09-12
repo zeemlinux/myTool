@@ -1,0 +1,19 @@
+If you are using Python3.6 or above use
+
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+python get-pip.py --user
+
+If you are using an older version of Python use
+
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+python get-pip.py --user
+
+You should receive a message like this
+
+
+Successfully installed pip-20.3.4 setuptools-44.1.1 wheel-0.37.1
+
+
+
+
+python -m pip install --user ansible
