@@ -1,0 +1,35 @@
+version: '3'
+services: 
+   jenkins: 
+      build: 
+         dockerfile: jenkins.dockerfile 
+         context: . 
+      image: tiagoamp/jenkins-ci 
+      container_name: JENKINS_CI_CONTAINER 
+      ports: 
+         - "8181:8080" 
+         - "50001:50000" 
+      networks: 
+         - tiagoamp-ci-network 
+      volumes: 
+         - volume_jenkins:/var/jenkins_home 
+      depends_on: 
+         - "sonar" 
+   sonar: 
+      build: 
+         dockerfile: sonar.dockerfile 
+         context: . 
+      image: tiagoamp/sonar-ci 
+      container_name: SONARQUBE_CI_CONTAINER 
+      ports: 
+         - "9001:9000" 
+         - "9092:9092" 
+      networks: 
+         - tiagoamp-ci-network
+ 
+networks: 
+   tiagoamp-ci-network: 
+      driver: bridge
+ 
+volumes: 
+   volume_jenkins:
